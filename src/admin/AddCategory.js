@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import Layout from '../core/Layout';
 import {isAuthenticated} from '../auth';
 import {Link} from 'react-router-dom';
+import {createCategory} from './apiAdmin'
 
 
 const AddCategory =()=>{
@@ -27,22 +28,60 @@ const AddCategory =()=>{
         setError('')
         setSuccess(false);
         //make requst to api to create category
+        // now to create new category we need to create new method which reqest backend api to create it in database
+        createCategory(user._id,token,{name})
+        .then(data =>{
+            if(data.error){
+                setError(true)
+            }else{
+                setError("");
+                setSuccess(true);
+            }
+        })
     }
 
     const newCategoryForm =()=>(
         <form onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Name</label>
-                <input type="text" className="form-control" onChnage={handleChange} value={name} autoFocus/>
-           <button className="btn btn-outline-primary mt-3">Create Category</button>
+                <input type="text" className="form-control" onChange={handleChange} value={name} autoFocus required/>
             </div>
+            <button className="btn btn-outline-primary ">Create Category</button>
+
         </form>
     );
+
+
+    const showSuccess =()=>{
+        if(success){
+            return <h3 className="text-success">{name} is created</h3>
+        }
+    }
+
+    const showError =()=>{
+        if(error){
+            return <h3 className="text-danger">{name} should have unique name</h3>
+        }
+    }
+
+    const goBack =()=>{
+       return(
+        <div className="mt-5">
+        <Link to="/admin/dashboard" className="text-danger">Back to Dashboard</Link>
+         </div>
+
+       ) 
+       }
+
+    
     return(
-        <Layout title="Add a new category" description={`welcome ${name} ready to add a new category`} >
+        <Layout title="Add a new category" description={`welcome ${user.name} ready to add a new category`} >
          <div className="row">
              <div className="col-md-8 offset-md-2">
+                {showSuccess()}
+                {showError()}
                 {newCategoryForm()}
+                {goBack()}
              </div>
 
          </div>
@@ -54,5 +93,6 @@ const AddCategory =()=>{
 }
 
 export default AddCategory;
+
 
 
