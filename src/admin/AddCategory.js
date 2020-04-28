@@ -5,12 +5,14 @@ import {Link} from 'react-router-dom';
 import {createCategory} from './apiAdmin'
 
 
+// this is a  react component
+
 const AddCategory =()=>{
     const [name,setName] = useState('')
     const [error,setError] = useState(false)
     const [success,setSuccess] = useState(false)
 
-    // destrucre user and info from localstorage
+    // destructure user and info from localstorage
 
     const {user,token} = isAuthenticated();
 // text-muted is a class of bootstrap which give grey light color

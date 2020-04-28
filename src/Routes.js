@@ -8,6 +8,11 @@ import Dashboard from './user/UserDashboard'
 import AdminRoute from './auth/AdminRoute';
 import AdminDashboard from './user/AdminDashboard'
 import Addcategory from './admin/AddCategory';
+import AddProduct from './admin/AddProduct';
+
+
+// here addcategory , addproduct is a component so when ever admin wil router to specific path
+// i.e create/product such component will will render and perform the following operation
 
 
 
@@ -25,6 +30,7 @@ const Routes = () =>{
             <PrivateRoute path ="/user/dashboard" exact component={Dashboard} />
             <AdminRoute path ="/admin/dashboard" exact component={AdminDashboard} />
             <AdminRoute path ="/create/category" exact component={Addcategory} />
+            <AdminRoute path ="/create/product" exact component={AddProduct} />
 
         </Switch>
     </BrowserRouter>
