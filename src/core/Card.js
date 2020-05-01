@@ -79,8 +79,8 @@ const handleChange =productId => event=>{
         return (
           showRemoveProductButton && (
             <button
-              onClick={() => {removeItem(product._id) // run useEffect in parent Cart
-                }}
+              onClick={() => removeItem(product._id) // run useEffect in parent Cart
+                }
               className="btn btn-outline-danger mt-2 mb-2">
               Remove Product
             </button>
