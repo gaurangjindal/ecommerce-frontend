@@ -18,7 +18,7 @@
 // it is an empty set 
 //var set4 = new Set(); 
 
-export const addItem = (item = [], count = 0, next = f => f) => {
+export const addItem = (item =[] , next ) => {
     let cart = [];
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {

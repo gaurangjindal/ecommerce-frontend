@@ -69,7 +69,7 @@ const handleChange =productId => event=>{
                 <div className="input-group-prepend">
                     <span className="input-group-text">Adjust Quantity</span>
                 </div>
-                <input type="number" className="form-control" vlaue={count} onChange={handleChange(product._id)}/>
+                <input type="number" className="form-control" value={count} onChange={handleChange(product._id)}/>
             </div>
 
         </div>
