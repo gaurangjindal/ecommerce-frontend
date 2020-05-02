@@ -142,3 +142,26 @@ const stringified = queryString.stringify(parsed);
     .catch(err => console.log(err));
 
  }
+
+
+
+ export const createOrder =(userId,token,createOrderData) => {
+
+    return fetch(`${API}/order/create/${userId}`,{
+        method:"POST",
+        headers:{
+            Accept:'application/json',
+            "Content-Type":"application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body:JSON.stringify(createOrderData)
+        
+    })
+    .then(response =>{
+        console.log('my payment data',response.json());
+        return response.json();
+        
+    })
+    .catch(err => console.log(err));
+
+ }
