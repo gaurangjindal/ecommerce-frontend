@@ -15,7 +15,7 @@ const Cart =() =>{
     useEffect(()=>{
        // console.log('max deep..')
         setItems(getCart())
-    },[items])
+    },[run])
 
 
     const showItems = items =>{
