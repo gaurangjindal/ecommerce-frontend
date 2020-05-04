@@ -92,7 +92,7 @@ const handlePrice = value=>{
     return(
         <Layout title="Shop page" description="Node react e-commerce app " className="container-fluid">
             <div className="row">
-                <div className="col-4">
+                <div className="col-3">
                     <h4>Filter by Categories</h4>
                 <ul>
                     <CheckBox categories={categories} 
@@ -101,15 +101,13 @@ const handlePrice = value=>{
                 </ul>
 
                 </div>
-                 <div className="col-8">
+                 <div className="col-9">
                     <h2 className="mb-4">
 
                         {filteredResults? <div className="row">
                             {filteredResults.map((product,i)=>(
                         <Card key={i} 
                         product={product}
-                        className="col-8"
-                        
                         />
                             ))}
                     </div>:null}

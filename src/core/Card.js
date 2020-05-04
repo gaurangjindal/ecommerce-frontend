@@ -89,7 +89,7 @@ const handleChange =productId => event=>{
 
 
     return(
-            <div className="col-10 mb-2">
+            <div className="col-4 mb-3">
             <div className="card">
                 <div className="card-header name">{product.name}</div>
                 <div className="card-body">

@@ -50,17 +50,13 @@ const Home =()=>{
             <h2 className="mb-4">New Arrival</h2>
 
             <div className="row">
-            {productsByArrival.map((product,i)=>(<div key={i} className="col-4 mb-3">
-                <Card  product={product}/>
-            </div>))}
+            {productsByArrival.map((product,i)=>(<Card key={i} product={product}/>))}
 
             </div>
 
             <h2 className="mb-4">Best sellers</h2>
             <div className="row">
-                {productsBySell.map((product,i)=>(<div key={i} className="col-4 mb-3">
-                        <Card product ={product}/>
-                </div>))}
+                {productsBySell.map((product,i)=>(<Card key={i} product={product}/>))}
     
             </div>            
         

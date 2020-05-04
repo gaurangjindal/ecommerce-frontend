@@ -39,6 +39,7 @@ const Cart =() =>{
                 run={run}
                 updater={handleCheck}
                 cartHelper = {handleUpdate}
+                
                />))}
             </div>
         )
