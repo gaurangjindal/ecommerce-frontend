@@ -1,5 +1,5 @@
 import React,{Fragment} from 'react';
-import { Link ,withRouter} from 'react-router-dom'
+import { Link ,withRouter, Redirect} from 'react-router-dom'
 import {signout,isAuthenticated} from '../auth'
 import {itemTotal} from './CartHelper'
 
@@ -16,9 +16,10 @@ const isActive =(history,path)=>{
 /* here link component is similar to anchor tag in html */
 const Menu =({history})=>{
 
-  //  const {name,email,role} = isAuthenticated()
+    //const {name,email,role} = isAuthenticated()
     console.log('this is my history role ->',isAuthenticated());
 
+    
     return(
         <div>
         <ul className="nav nav-tabs bg-primary">
@@ -48,6 +49,8 @@ const Menu =({history})=>{
                <Link className="nav-link" style={isActive (history,'/admin/dashboard')} to="/admin/dashboard">Dashboard</Link>
            </li>
            )}
+
+
 
             {!isAuthenticated() && (
                 <Fragment>

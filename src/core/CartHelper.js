@@ -82,7 +82,7 @@ export const updateItem = (productId, count) => {
     }
 };
 
-export const removeItem = productId => {
+export const removeItem = (productId, updater) => {
     let cart = [];
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
@@ -97,6 +97,7 @@ export const removeItem = productId => {
 
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+    updater();
     return cart;
 };
 

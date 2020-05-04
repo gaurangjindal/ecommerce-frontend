@@ -7,13 +7,10 @@ import {addItem, updateItem,removeItem} from './CartHelper';
 const Card =({product,showViewProductButton =true , 
     showAddToCartButton= true,
     cartUpdate=false, 
-    showRemoveProductButton=false}) =>{
+    showRemoveProductButton=false,updater,cartHelper}) =>{
 
     const [redirect,setRedirect] = useState(false);
     const [count,setCount] = useState(product.count);
-
-
-
     
     const showViewButton =(showViewProductButton) =>{
         return(
@@ -57,11 +54,11 @@ const Card =({product,showViewProductButton =true ,
     }
 
 const handleChange =productId => event=>{
-    
     setCount(event.target.value < 1 ? 1 :event.target.value)
     if(event.target.value >=1){
         updateItem(productId,event.target.value)
     }
+    cartHelper();
 }
     const showCartUpdateOptions = cartUpdate =>{
         return cartUpdate && <div>
@@ -79,7 +76,7 @@ const handleChange =productId => event=>{
         return (
           showRemoveProductButton && (
             <button
-              onClick={() => removeItem(product._id) // run useEffect in parent Cart
+              onClick={() => removeItem(product._id, updater) // run useEffect in parent Cart
                 }
               className="btn btn-outline-danger mt-2 mb-2">
               Remove Product

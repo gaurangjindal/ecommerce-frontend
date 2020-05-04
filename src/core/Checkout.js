@@ -18,6 +18,7 @@ const Checkout =({products})=>{
         address:''
     })
 
+
     const userId = isAuthenticated() && isAuthenticated().user._id
     const token = isAuthenticated() && isAuthenticated().token
 
@@ -31,15 +32,38 @@ const Checkout =({products})=>{
         })
     }
 
+
     useEffect(()=>{
         getToken(userId,token)
     },[])
 
 
-    const getTotal =()=>{
-        return products.reduce((currentValue,nextValue)=>{
-            return currentValue + nextValue.count * nextValue.price;
-        },0)
+    const getTotal =()=>{  
+        let tempCart = {};
+        if (localStorage.getItem('cart')) {
+            tempCart = JSON.parse(localStorage.getItem('cart')); //sideeffect application will be stuck here
+
+            let total = 0;
+            if(tempCart.length === 0) {
+                return 0;
+            }
+
+            tempCart.forEach((ele) => {
+                console.log(ele);
+                    if(ele.count)
+                    {
+                        total+= ele.count * ele.price;
+                    }
+            })
+            
+            return total;
+           // return tempCart[0].;
+        }
+        else {
+            return 0;
+        }
+       
+        return 0;
     }
 
     const showCheckout=()=>{

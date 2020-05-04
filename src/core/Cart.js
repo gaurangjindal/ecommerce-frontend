@@ -9,13 +9,21 @@ import Checkout from './Checkout'
 const Cart =() =>{
     const [items,setItems] = useState([])
     const [run, setRun] = useState(false);
-    
+    const [stateChecker,setChecker] = useState(0);
+    const [cartUpdater, setCartUpdater] = useState(0);
 
+    const handleCheck =()=>{
+        setChecker(stateChecker+1);
+    }
+
+    const handleUpdate = () => {
+        setCartUpdater(cartUpdater+1);
+    }
 
     useEffect(()=>{
        // console.log('max deep..')
         setItems(getCart())
-    },[run])
+    },[run,stateChecker])
 
 
     const showItems = items =>{
@@ -29,7 +37,9 @@ const Cart =() =>{
                 showRemoveProductButton={true}
                 setRun={setRun}
                 run={run}
-                />))}
+                updater={handleCheck}
+                cartHelper = {handleUpdate}
+               />))}
             </div>
         )
     }

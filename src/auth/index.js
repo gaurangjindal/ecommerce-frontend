@@ -2,6 +2,7 @@ import {API} from '../config'
 
 
 
+
 export const signup =(user)=>{
  //    console.log(user);
    return  fetch(`${API}/signup`,{
@@ -19,6 +20,7 @@ export const signup =(user)=>{
     })
     .catch(err=>{
         console.log(err);
+        
     })
  }
 
@@ -37,7 +39,7 @@ export const signup =(user)=>{
         return response.json();
     })
     .then(data=>{
-        console.log(data);
+      //  console.log('my signin data',data);
         return data;
     })
     .catch(err=>{

@@ -43,24 +43,26 @@ import {signin,authenticate,isAuthenticated} from '../auth'
         const clickSubmit =(event)=>{
             event.preventDefault();
             setValues({...values,error:false,loading:true});
-            signin({email,password}) 
+          signin({email,password}) 
      .then(data=>{
-         console.log('my data in signin',data);
-           if(data.error){
+        // console.log('my data in signin',data);
+           if(data.error || data.err === "user doesnot exist"){
                 setValues({...values,error:data.error,loading:false});
             }
             else{
                 authenticate(data,()=>{
-                    setValues({...values,redirectToReferrer:true})
+                    setValues({...values,redirectToReferrer:true})    
                 })
             } 
-        }) 
+        })
+        
+        
         // we are passing all value as an object to user parameter
            // signup({name:name,email:email,password:password})
             // when key and values name are same so we can only write values
         
         }
-    const signupForm =()=>(
+    const signinForm =()=>(
         <form>
 
             <div className="form-group">
@@ -95,7 +97,7 @@ import {signin,authenticate,isAuthenticated} from '../auth'
              if(redirectToReferrer){
                  if(user && user.role === 1)
                    return <Redirect to="/admin/dashboard" />
-             }else{
+             }else {
                  return <Redirect to="/user/dashboard" />
              }
              
@@ -103,7 +105,6 @@ import {signin,authenticate,isAuthenticated} from '../auth'
              if(isAuthenticated()){
                 return <Redirect to="/" />;
          }
-    
         
 
     
@@ -115,7 +116,7 @@ import {signin,authenticate,isAuthenticated} from '../auth'
         className="container col-md-8 offset-md-2">
         {showLoading()}
         {showError()}
-        {signupForm()}
+        {signinForm()}
         {redirectUser}
      </Layout>
     )
