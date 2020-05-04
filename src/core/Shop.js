@@ -99,12 +99,7 @@ const handlePrice = value=>{
                     handleFilters={filters => handleFilters(filters,"category")}
                     />
                 </ul>
-                <h4>Filter by Price Range</h4>
-                <div>
-                    <RadioBox prices={prices} 
-                    handleFilters={filters => handleFilters(filters,"Price")}
-                    />
-                </div>
+
                 </div>
                  <div className="col-8">
                     <h2 className="mb-4">

@@ -40,8 +40,10 @@ const searchSubmit =(e) =>{
 const searchData =()=>{
     //console.log(search,category);
     if(search){
+         
         list({search:search || undefined,category:category}).then(response=>{
-            if( response.error){
+           //console.log('my response',response)
+            if(response.error || response == 'undefined'){
                 console.log(response.error)
             }else{
                 setData({...data,results:response,searched:true})

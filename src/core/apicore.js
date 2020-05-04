@@ -77,16 +77,16 @@ const stringified = queryString.stringify(parsed);
 
 
   export const list =(params) => {
-
+    console.log('p',params)
     const query =  queryString.stringify(params)
 
-   // console.log(query);
+    console.log('q',query);
 
-    return fetch(`${API}/products/search?${query}`,{
+    return fetch(`${API}/products?${query}`,{
         method:"GET"
     })
     .then(response =>{
-        return response.JSON();
+        return response.json();
     })
     .catch(err => console.log(err));
 
